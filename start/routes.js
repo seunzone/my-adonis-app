@@ -1,4 +1,5 @@
 'use strict'
+const Todo = use('App/Models/Todo');
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,4 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
-// Route.get('/', ({ req, res, view}) =>{
-//     return view.render('welcome');
-// })
+Route.post('/', 'TodoController.store');

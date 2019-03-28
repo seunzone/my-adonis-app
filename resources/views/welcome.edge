@@ -4,18 +4,42 @@
   <meta charset="UTF-8" />
   <title>Hello Adonis</title>
   {{ style('style') }}
-</head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
 <body>
-  <section>
-    <div class="logo"></div>
-    <div class="title"></div>
-    <div class="subtitle">
-      <p>AdonisJs simplicity will make you feel confident about your code</p>
-      <p>
-        Don't know where to start? Read the <a href="https://adonisjs.com/docs">documentation</a>.
-      </p>
-      <h1>Learn Adonis</h1>
-    </div>
-  </section>
+  <div class="container">
+      <div class="row area">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <div class="md-form active-pink active-pink-2 mb-3 mt-0">
+            <form action="{{ route('TodoController.store')}}" method="POST">
+                {{ csrfField() }}
+                <input class="form-control" type="text" name="text" placeholder="Type in Todo..." autofocus>
+                </form>
+              </div>
+          </div>
+          <div class="col-md-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="container">
+
+                    <h4 class="card-title">My Todo List</h4><hr>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Some example text. Some example text.</p>
+                  <button class="btn btn-info">
+                        Edit
+                    </button>
+                  <button class="btn btn-danger">
+                      Delete
+                  </button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+  </div>
 </body>
 </html>
