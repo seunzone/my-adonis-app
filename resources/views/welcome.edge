@@ -11,6 +11,15 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <div class="md-form active-pink active-pink-2 mb-3 mt-0">
+                @if(flashMessage('notification'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ flashMessage('notification') }}
+    
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                    </div>
+                @endif
             <form action="{{ route('TodoController.store')}}" method="POST">
                 {{ csrfField() }}
                 <input class="form-control" type="text" name="text" placeholder="Type in Todo..." autofocus>
@@ -36,8 +45,9 @@
 
                     <h4 class="card-title">My Todo List</h4><hr>
                 </div>
+                @each(todo in todos)
                 <div class="card-body">
-                  <p class="card-text">Some example text. Some example text.</p>
+                <p class="card-text">{{todo.text}}</p>
                   <button class="btn btn-info">
                         Edit
                     </button>
@@ -45,6 +55,7 @@
                       Delete
                   </button>
                 </div>
+                @endeach
               </div>
         </div>
         <div class="col-md-2"></div>

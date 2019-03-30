@@ -3,9 +3,10 @@ const { validateAll } = use('Validator');
 const Todo = use('App/Models/Todo');
 
 class TodoController {
-    // async index ({ view }) {
-    //     const todos = await TodoController.call();
-    // }
+    async index ({ view }) {
+        const todos = await Todo.all();
+        return view.render('welcome', { todos: todos.toJSON() });
+    }
     async store ({ request, response, session }) {
         const body = request.all();
         const rules = {
@@ -24,7 +25,7 @@ class TodoController {
         const todo = await Todo.create({
             text: body.text
         })
-        // console.log(todo)
+        session.flash({ notification: 'Todo created successfully'});
         return response.redirect('/');
     }
 }

@@ -17,5 +17,9 @@ const Todo = use('App/Models/Todo');
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+// Route.on('/').render('welcome')
+// Route.get('/', ({ request, response, view }) => {
+//     return view.render('welcome', Todo.index);
+// })
+Route.get('/', 'TodoController.index');
 Route.post('/', 'TodoController.store');
